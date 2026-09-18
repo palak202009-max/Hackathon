@@ -511,4 +511,22 @@ body {
     color: #718080;
 
 }
+#registerForm label {
+    display: block;
+    font-size: 13px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+#registerForm input,
+#registerForm select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #CBD5E0;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    background: white;
+}
 }

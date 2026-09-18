@@ -1,4 +1,3 @@
-
 // =====================================================
 // PATIENT ZERO
 // LOGIN + REGISTRATION + DASHBOARD
@@ -9,9 +8,7 @@
 // REGISTRATION
 // =====================================================
 
-const registerForm =
-    document.getElementById("registerForm");
-
+const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
 
@@ -19,14 +16,11 @@ if (registerForm) {
 
         event.preventDefault();
 
-
-        // Get registration data
-
         const name =
             document.getElementById("registerName").value;
 
         const email =
-            document.getElementById("registerEmail").value;
+            document.getElementById("registerEmail").value.trim();
 
         const password =
             document.getElementById("registerPassword").value;
@@ -37,63 +31,53 @@ if (registerForm) {
         const gender =
             document.getElementById("registerGender").value;
 
+        const blood =
+            document.getElementById("registerBlood").value;
 
-        // Create user object
 
         const user = {
 
             name: name,
-
             email: email,
-
             password: password,
-
             dob: dob,
-
             gender: gender,
-
-            blood: "Not added",
+            blood: blood,
 
             documents: 0,
-
             labs: 0,
-
             medicines: 0,
-
             visits: 0
 
         };
 
 
-        // Save user in browser
-
+        // Save account
         localStorage.setItem(
             "patientZeroUser",
             JSON.stringify(user)
         );
 
 
-        // Show success message
+        // Login automatically
+        localStorage.setItem(
+            "patientZeroLoggedIn",
+            "true"
+        );
 
-        const message = document.getElementById(
-            "registerMessage")
-            
-        message.textContent =
+
+        document.getElementById(
+            "registerMessage"
+        ).textContent =
             "Account created successfully!";
 
 
-            // User is now logged in
-            localStorage.setItem(
-                "patientZeroLoggedIn",
-                "true"
-            );
+        // Go to dashboard
+        setTimeout(function() {
 
-            // Open dashboard
-            setTimeout(function() {
+            window.location.href = "dashboard.html";
 
-                window.location.href = "dashboard.html";
-
-            }, 1000);
+        }, 500);
 
     });
 
@@ -105,9 +89,7 @@ if (registerForm) {
 // LOGIN
 // =====================================================
 
-const loginForm =
-    document.getElementById("loginForm");
-
+const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
 
@@ -117,91 +99,35 @@ if (loginForm) {
 
 
         const email =
-            document.getElementById("email").value;
+            document.getElementById("email").value.trim();
 
         const password =
             document.getElementById("password").value;
 
 
-        // Get registered user
-
+        // Get registered account
         const savedUser =
             localStorage.getItem("patientZeroUser");
 
 
-        let user = null;
+        if (!savedUser) {
 
-
-        if (savedUser) {
-
-            user = JSON.parse(savedUser);
-
-        }
-
-
-        // -------------------------------------------------
-        // DEMO ACCOUNT
-        // -------------------------------------------------
-
-        if (
-            email === "demo@patientzero.com" &&
-            password === "123456"
-        ) {
-
-            const demoUser = {
-
-                name: "Demo Patient",
-
-                email: "demo@patientzero.com",
-
-                password: "123456",
-
-                dob: "Not added",
-
-                gender: "Not specified",
-
-                blood: "Not added",
-
-                documents: 2,
-
-                labs: 1,
-
-                medicines: 1,
-
-                visits: 1
-
-            };
-
-
-            localStorage.setItem(
-                "patientZeroUser",
-                JSON.stringify(demoUser)
-            );
-
-
-            localStorage.setItem(
-                "patientZeroLoggedIn",
-                "true"
-            );
-
-
-            // NEW WEBPAGE
-
-            window.location.href =
-                "dashboard.html";
+            document.getElementById(
+                "loginMessage"
+            ).textContent =
+                "No account found. Please register first.";
 
             return;
 
         }
 
 
+        const user =
+            JSON.parse(savedUser);
 
-        // -------------------------------------------------
-        // REGISTERED USER
-        // -------------------------------------------------
 
+        // Check login
         if (
-            user &&
             email === user.email &&
             password === user.password
         ) {
@@ -211,8 +137,6 @@ if (loginForm) {
                 "true"
             );
 
-
-            // NEW WEBPAGE
 
             window.location.href =
                 "dashboard.html";
@@ -238,43 +162,30 @@ if (loginForm) {
 // DASHBOARD
 // =====================================================
 
-if (
-    document.getElementById("patientName")
-) {
-
+if (document.getElementById("patientName")) {
 
     const loggedIn =
-        localStorage.getItem(
-            "patientZeroLoggedIn"
-        );
+        localStorage.getItem("patientZeroLoggedIn");
 
-
-    // If user isn't logged in
 
     if (loggedIn !== "true") {
 
         window.location.href =
-            "abc.html";
+            "b-index.html";
 
     }
 
     else {
 
-
         const savedUser =
-            localStorage.getItem(
-                "patientZeroUser"
-            );
+            localStorage.getItem("patientZeroUser");
 
 
         if (savedUser) {
 
-
             const user =
                 JSON.parse(savedUser);
 
-
-            // Patient name
 
             document.getElementById(
                 "patientName"
@@ -288,15 +199,11 @@ if (
                 user.name;
 
 
-            // Email
-
             document.getElementById(
                 "email"
             ).textContent =
                 user.email;
 
-
-            // DOB
 
             document.getElementById(
                 "dob"
@@ -304,23 +211,17 @@ if (
                 user.dob;
 
 
-            // Gender
-
             document.getElementById(
                 "gender"
             ).textContent =
                 user.gender;
 
 
-            // Blood group
-
             document.getElementById(
                 "blood"
             ).textContent =
                 user.blood;
 
-
-            // Statistics
 
             document.getElementById(
                 "documents"
@@ -365,7 +266,7 @@ function logout() {
 
 
     window.location.href =
-        "abc.html";
+        "b-index.html";
 
 }
 
@@ -381,5 +282,45 @@ function addRecord() {
         "Medical record upload module will be added here."
     );
 
+function testLogin() {
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const savedUser =
+        localStorage.getItem("patientZeroUser");
+
+    if (!savedUser) {
+
+        document.getElementById("loginMessage").textContent =
+            "NO ACCOUNT SAVED";
+
+        return;
+    }
+
+    const user = JSON.parse(savedUser);
+
+    if (
+        email === user.email &&
+        password === user.password
+    ) {
+
+        localStorage.setItem(
+            "patientZeroLoggedIn",
+            "true"
+        );
+
+        window.location.href = "dashboard.html";
+
+    } else {
+
+        document.getElementById("loginMessage").textContent =
+            "EMAIL/PASSWORD DOES NOT MATCH";
+
+    }
 }
 
+}
