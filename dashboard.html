@@ -1,0 +1,262 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Patient Zero | Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-body">
+
+    <header class="navbar">
+
+        <div class="brand">
+            <div class="logo small">PZ</div>
+            <span>Patient Zero</span>
+        </div>
+
+        <button class="logout-btn" onclick="logout()">
+            Logout
+        </button>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <div class="welcome">
+            <div>
+                <p class="small-text">PATIENT DASHBOARD</p>
+                <h1>Welcome back, <span id="patientName">Patient</span> 👋</h1>
+                <p>
+                    Your medical records, timeline and important information
+                    in one place.
+                </p>
+            </div>
+
+            <button class="add-btn" onclick="addRecord()">
+                + Add Medical Record
+            </button>
+        </div>
+
+
+        <!-- Patient Information -->
+
+        <section class="section">
+
+            <h2>Patient Information</h2>
+
+            <div class="patient-card">
+
+                <div class="profile-icon">
+                    👤
+                </div>
+
+                <div class="patient-info">
+
+                    <div>
+                        <span>Name</span>
+                        <strong id="name">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <strong id="email">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Date of Birth</span>
+                        <strong id="dob">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Gender</span>
+                        <strong id="gender">—</strong>
+                    </div>
+
+                    <div>
+                        <span>Blood Group</span>
+                        <strong id="blood">—</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Statistics -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-icon">📄</div>
+                <h3 id="documents">0</h3>
+                <p>Documents</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🧪</div>
+                <h3 id="labs">0</h3>
+                <p>Lab Reports</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">💊</div>
+                <h3 id="medicines">0</h3>
+                <p>Medications</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🏥</div>
+                <h3 id="visits">0</h3>
+                <p>Hospital Visits</p>
+            </div>
+
+        </section>
+
+
+        <!-- Timeline -->
+
+        <section class="section">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Medical Timeline</h2>
+                    <p>Chronological view of your records.</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+
+                        <span class="date">
+                            15 September 2026
+                        </span>
+
+                        <h3>Laboratory Report Added</h3>
+
+                        <p>
+                            Blood test report uploaded to patient records.
+                        </p>
+
+                        <small>
+                            Source: Laboratory Report
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+
+                        <span class="date">
+                            10 September 2026
+                        </span>
+
+                        <h3>Hospital Visit</h3>
+
+                        <p>
+                            Medical consultation record added.
+                        </p>
+
+                        <small>
+                            Source: Hospital Visit
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-content">
+
+                        <span class="date">
+                            05 September 2026
+                        </span>
+
+                        <h3>Prescription Added</h3>
+
+                        <p>
+                            Medication record added to the timeline.
+                        </p>
+
+                        <small>
+                            Source: Prescription
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Recent Documents -->
+
+        <section class="section">
+
+            <h2>Recent Documents</h2>
+
+            <div class="documents">
+
+                <div class="document-card">
+                    <span class="document-icon">📄</span>
+                    <div>
+                        <h3>Blood_Test_Report.pdf</h3>
+                        <p>15 September 2026</p>
+                    </div>
+                </div>
+
+                <div class="document-card">
+                    <span class="document-icon">📄</span>
+                    <div>
+                        <h3>Hospital_Visit.pdf</h3>
+                        <p>10 September 2026</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="disclaimer">
+
+            <strong>Important:</strong>
+
+            Patient Zero is an informational record-organization
+            system. It does not provide autonomous medical diagnosis
+            or treatment recommendations.
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
+

@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Zero | Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <div class="login-left">
+            <div class="logo">PZ</div>
+
+            <h1>Patient Zero</h1>
+            <p class="tagline">
+                The Missing Context
+            </p>
+
+            <p class="description">
+                Organize your medical records into one clear,
+                connected timeline.
+            </p>
+        </div>
+
+        <div class="login-card">
+
+            <h2>Welcome Back</h2>
+            <p>Login to access your medical record dashboard.</p>
+
+            <form id="loginForm">
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <button type="submit">
+                    Login →
+                </button>
+
+                <p id="loginMessage"></p>
+
+            </form>
+
+            <div class="demo-login">
+                <strong>Demo Login</strong><br>
+                Email: demo@patientzero.com<br>
+                Password: 123456
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="szcript.js"></script>
+</body>
+</html>
